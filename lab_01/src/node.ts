@@ -55,9 +55,9 @@ export class Task extends Node {
 		this.next = [];
 		this.prev = [];
 
-		this.es = -Infinity;
-		this.ef = -Infinity;
-		this.ls = +Infinity;
-		this.lf = +Infinity;
+		this.es = NaN;
+		this.ef = NaN;
+		this.ls = NaN;
+		this.lf = NaN;
 	}
 }

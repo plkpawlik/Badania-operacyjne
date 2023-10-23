@@ -23,6 +23,10 @@ for (let i = 0; i < data.M; i++) {
 	nextTask.next.push(prevTask);
 }
 
-const heap = new Heap(tasks).CPM();
+const heap = new Heap(tasks);
 
-console.log(tasks.map((task) => `${task.es} ${task.ef} ${task.ls} ${task.lf}`).join("\n"));
+const res_recursive = heap.CPM("recursive");
+const res_repeated = heap.CPM("repeated");
+
+console.log(res_repeated);
+console.log(res_recursive === res_repeated);
