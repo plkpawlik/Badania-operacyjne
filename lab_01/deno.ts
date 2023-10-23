@@ -1,16 +1,17 @@
-import { data10 } from "./mock.ts";
 import { Heap } from "./src/heap.ts";
-import { Head, Tail, Task } from "./src/node.ts";
+import { Task } from "./src/node.ts";
+import { readData } from "./src/read.ts";
 
-const tasks = new Array<Task>(data10.N);
+const data = readData(Deno.args[0]);
+const tasks = new Array<Task>(data.N);
 
-for (let i = 0; i < data10.N; i++) {
-	tasks[i] = new Task(i + 1, data10.nTimes[i]);
+for (let i = 0; i < data.N; i++) {
+	tasks[i] = new Task(i + 1, data.nTimes[i]);
 }
 
-for (let i = 0; i < data10.M; i++) {
-	const prevID = data10.mTasks[i][1];
-	const nextID = data10.mTasks[i][0];
+for (let i = 0; i < data.M; i++) {
+	const prevID = data.mTasks[i][1];
+	const nextID = data.mTasks[i][0];
 
 	const prevTask = tasks.find((task) => task.id === prevID);
 	const nextTask = tasks.find((task) => task.id === nextID);
