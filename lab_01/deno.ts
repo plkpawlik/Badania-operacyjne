@@ -1,6 +1,7 @@
 import { Heap } from "./src/heap.ts";
 import { Task } from "./src/node.ts";
 import { readData } from "./src/read.ts";
+import { benchmark } from "./src/time.ts";
 
 const data = readData(Deno.args[0]);
 const tasks = new Array<Task>(data.N);
@@ -25,8 +26,5 @@ for (let i = 0; i < data.M; i++) {
 
 const heap = new Heap(tasks);
 
-const res_recursive = heap.CPM("recursive");
-const res_repeated = heap.CPM("repeated");
-
-console.log(res_repeated);
-console.log(res_recursive === res_repeated);
+benchmark(() => heap.CPM("recursive"));
+benchmark(() => heap.CPM("repeated"));

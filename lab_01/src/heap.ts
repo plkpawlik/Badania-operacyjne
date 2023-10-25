@@ -1,4 +1,4 @@
-import { Head, Node, Tail, Task } from "./node.ts";
+import { Head, Tail, Task } from "./node.ts";
 
 export class Heap {
 	readonly head: Head;
@@ -24,20 +24,18 @@ export class Heap {
 			case "repeated":
 				this.initRepeated();
 				this.forwards();
-				this.backwards();
+				this.backwards(this.cpmTotalTime);
 				break;
 		}
-
-		return this.tasks.map(({ es, ef, ls, lf }) => `${es} ${ef} ${ls} ${lf}`).join("\n");
 	}
 
 	private evalNext(node: Head | Tail | Task, acc: number): void {
 		if (Tail.isTail(node)) return;
 
 		for (const task of node.next) {
-			if (Task.isTask(task)) {
-				task.es = Math.max(task.es, acc);
-				task.ef = Math.max(task.ef, acc + task.dt);
+			if (Task.isTask(task) && task.es < acc) {
+				task.es = acc;
+				task.ef = acc + task.dt;
 
 				this.evalNext(task, task.ef);
 			}
@@ -48,16 +46,16 @@ export class Heap {
 		if (Head.isHead(node)) return;
 
 		for (const task of node.prev) {
-			if (Task.isTask(task)) {
-				task.lf = Math.min(task.lf, acc);
-				task.ls = Math.min(task.ls, acc - task.dt);
+			if (Task.isTask(task) && task.lf > acc) {
+				task.lf = acc;
+				task.ls = acc - task.dt;
 
 				this.evalPrev(task, task.ls);
 			}
 		}
 	}
 
-	private backwards(): void {
+	private backwards(cpm: number): void {
 		let queue = this.tasks.length;
 
 		while (queue) {
@@ -66,23 +64,15 @@ export class Heap {
 				if (!Number.isNaN(task.lf)) continue;
 
 				if (task.next.every((node) => Tail.isTail(node))) {
-					task.ls = this.cpmTotalTime - task.dt;
-					task.lf = this.cpmTotalTime;
+					task.ls = cpm - task.dt;
+					task.lf = cpm;
 					queue--;
 					continue;
 				}
 
-				if (
-					task.next.some((node) =>
-						!Task.isTask(node) || Number.isNaN(node.ls) || Number.isNaN(node.lf)
-					)
-				) continue;
+				if (this.isNextInvalid(task)) continue;
 
-				let lf = +Infinity;
-
-				for (const node of task.next) {
-					if (Task.isTask(node)) lf = Math.min(lf, node.ls);
-				}
+				const lf = this.calcLF(task);
 
 				task.ls = lf - task.dt;
 				task.lf = lf;
@@ -106,22 +96,64 @@ export class Heap {
 					continue;
 				}
 
-				if (
-					task.prev.some((node) =>
-						!Task.isTask(node) || Number.isNaN(node.es) || Number.isNaN(node.ef)
-					)
-				) continue;
+				if (this.isPrevInvalid(task)) continue;
 
-				let ef = -Infinity;
-
-				for (const node of task.prev) {
-					if (Task.isTask(node)) ef = Math.max(ef, node.ef);
-				}
+				const ef = this.calcEF(task);
 
 				task.es = ef;
 				task.ef = ef + task.dt;
 				queue--;
 			}
+		}
+	}
+
+	private calcEF(task: Task): number {
+		let ef = -Infinity;
+
+		for (const node of task.prev) {
+			if (Task.isTask(node)) ef = Math.max(ef, node.ef);
+		}
+
+		return ef;
+	}
+
+	private calcLF(task: Task): number {
+		let lf = +Infinity;
+
+		for (const node of task.next) {
+			if (Task.isTask(node)) lf = Math.min(lf, node.ls);
+		}
+
+		return lf;
+	}
+
+	private isNextInvalid(task: Task): boolean {
+		return task.next.some((node) =>
+			!Task.isTask(node) || Number.isNaN(node.ls) || Number.isNaN(node.lf)
+		);
+	}
+
+	private isPrevInvalid(task: Task): boolean {
+		return task.prev.some((node) =>
+			!Task.isTask(node) || Number.isNaN(node.es) || Number.isNaN(node.ef)
+		);
+	}
+
+	private initRecursive(): void {
+		for (const task of this.tasks) {
+			task.es = -Infinity;
+			task.ef = -Infinity;
+			task.ls = +Infinity;
+			task.lf = +Infinity;
+		}
+	}
+
+	private initRepeated(): void {
+		for (const task of this.tasks) {
+			task.es = NaN;
+			task.ef = NaN;
+			task.ls = NaN;
+			task.lf = NaN;
 		}
 	}
 
@@ -140,24 +172,6 @@ export class Heap {
 				task.next.push(this.tail);
 				this.tail.prev.push(task);
 			}
-		}
-	}
-
-	private initRecursive(): void {
-		for (const task of this.tasks) {
-			task.es = -Infinity;
-			task.ef = -Infinity;
-			task.ls = +Infinity;
-			task.lf = +Infinity;
-		}
-	}
-
-	private initRepeated(): void {
-		for (const task of this.tasks) {
-			task.es = NaN;
-			task.ef = NaN;
-			task.ls = NaN;
-			task.lf = NaN;
 		}
 	}
 
