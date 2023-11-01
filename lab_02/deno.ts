@@ -12,7 +12,7 @@ benchmark(() => new Dijkstra(graph).solve());
 
 // calculate solutions
 const solution1 = new BellmanFord(graph).solve();
-const solution2 = new BellmanFord(graph).solve();
+const solution2 = new Dijkstra(graph).solve();
 
 // compare solutions
 console.log(JSON.stringify(solution1) === JSON.stringify(solution2));
