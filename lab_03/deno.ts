@@ -1,7 +1,11 @@
-import { data5 } from "./mock.ts";
 import { Graph } from "./src/graph.ts";
+import { readData } from "./src/read.ts";
 import { solveFordFulkerson } from "./src/solve.FordFulkerson.ts";
 
-const graph = new Graph(data5.size, data5.data);
+const data = readData(Deno.args[0]);
+const graph = new Graph(data.size, data.data);
 
-console.log(solveFordFulkerson(graph, 0, graph.size - 1));
+const flow1 = solveFordFulkerson(graph, 0, graph.size - 1);
+const flow2 = solveFordFulkerson(graph, 0, graph.size - 1);
+
+console.log(flow1 === flow2, flow1, flow2);
