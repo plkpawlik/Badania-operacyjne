@@ -2,20 +2,20 @@ import { Graph } from "./graph.ts";
 
 export function BFSi(graph: Graph, input: number, output: number, prev: number[]): boolean {
 	const mark = new Array<boolean>(graph.size).fill(false);
-	const queue = [input];
+	const path = [input];
 
 	mark[input] = true;
 	prev[input] = NaN;
 
-	while (queue.length > 0) {
-		const u = queue.shift()!;
+	while (path.length > 0) {
+		const u = path.shift()!;
 
 		for (let v = 0; v < graph.size; v++) {
 			if (mark[v] || !graph.data[u][v]) continue;
 
 			mark[v] = true;
 			prev[v] = u;
-			queue.push(v);
+			path.push(v);
 		}
 	}
 
@@ -24,22 +24,22 @@ export function BFSi(graph: Graph, input: number, output: number, prev: number[]
 
 export function BFSr(graph: Graph, input: number, output: number, prev: number[]): boolean {
 	const mark = new Array<boolean>(graph.size).fill(false);
-	const queue = [input];
+	const path = [input];
 
 	mark[input] = true;
 	prev[input] = NaN;
 
 	(function next(): void {
-		if (queue.length === 0) return;
+		if (path.length === 0) return;
 
-		const u = queue.shift()!;
+		const u = path.shift()!;
 
 		for (let v = 0; v < graph.size; v++) {
 			if (mark[v] || !graph.data[u][v]) continue;
 
 			mark[v] = true;
 			prev[v] = u;
-			queue.push(v);
+			path.push(v);
 		}
 
 		next();

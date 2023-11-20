@@ -2,20 +2,20 @@ import { Graph } from "./graph.ts";
 
 export function DFSi(graph: Graph, input: number, output: number, prev: number[]): boolean {
 	const mark = new Array<boolean>(graph.size).fill(false);
-	const queue = [input];
+	const path = [input];
 
 	mark[input] = true;
 	prev[input] = NaN;
 
-	while (queue.length > 0) {
-		const u = queue.pop()!;
+	while (path.length > 0) {
+		const u = path.pop()!;
 
 		for (let v = 0; v < graph.size; v++) {
 			if (mark[v] || !graph.data[u][v]) continue;
 
 			mark[v] = true;
 			prev[v] = u;
-			queue.push(v);
+			path.push(v);
 		}
 	}
 
