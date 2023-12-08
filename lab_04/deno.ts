@@ -1,4 +1,5 @@
 import { nextArrivalTimeA, nextServiceTimeA } from "./src/functions.ts";
+import { tRequest } from "./src/requests.ts";
 
 const N = 10_000_000;
 
@@ -7,14 +8,17 @@ let nextServiceTime: number;
 let simulationTime = 0;
 let totalDelayTime = 0;
 
-const queue: {
-	arrivalTime: number;
-	serviceTime: number;
-	removalTime: number;
-}[] = [];
+const queue: tRequest[] = [];
 
 /*   *   *   *   *   *   *   *   *   *   */
 /*   *   *   *   *   *   *   *   *   *   */
+
+let next: tRequest;
+let prev: tRequest = {
+	arrivalTime: NaN,
+	serviceTime: NaN,
+	removalTime: 0,
+};
 
 for (let n = 0; n < N; n++) {
 	nextArrivalTime = nextArrivalTimeA();
@@ -28,33 +32,15 @@ for (let n = 0; n < N; n++) {
 
 	simulationTime += nextArrivalTime;
 
-	if (n === 0) continue;
+	/*   *   *   *   *   *   *   *   */
+
+	const accumulatedDelayTime = Math.min(0, queue[0].arrivalTime - prev.removalTime);
+	const expectedRemovalTime = queue[0].arrivalTime + queue[0].serviceTime;
+
+	queue[0].removalTime = expectedRemovalTime - accumulatedDelayTime;
+	totalDelayTime += queue[0].removalTime - expectedRemovalTime;
+
+	prev = queue.shift()!;
 }
 
-queue[0].removalTime = queue[0].arrivalTime + queue[0].serviceTime;
-
-for (let n = 1; n < N; n++) {
-	const accumulatedDelayTime = Math.max(0, queue[n - 1].removalTime - queue[n].arrivalTime);
-	const expectedRemovalTime = queue[n].arrivalTime + queue[n].serviceTime;
-
-	queue[n].removalTime = expectedRemovalTime + accumulatedDelayTime;
-
-	totalDelayTime += queue[n].removalTime - expectedRemovalTime;
-}
-
-/*   *   *   *   *   *   *   *   *   *   */
-/*   *   *   *   *   *   *   *   *   *   */
-
-console.log(queue);
-console.log(
-	queue.reduce(
-		(prev, curr) => prev + (curr.removalTime - (curr.arrivalTime - curr.serviceTime)),
-		0,
-	),
-);
-console.log(
-	queue.reduce(
-		(prev, curr) => prev + (curr.removalTime - (curr.arrivalTime - curr.serviceTime)),
-		0,
-	) / N,
-);
+console.log(totalDelayTime / N);
