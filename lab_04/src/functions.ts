@@ -3,7 +3,7 @@ export const BASE_SERVICE_TIME = 60;
 export const BASE_STD_DEV = 20;
 
 // exponential distribution: E(120)
-export const nextArrivalTime = (): number => {
+export const nextArrivalTimeA = (): number => {
 	return -BASE_ARRIVAL_TIME * Math.log(1 - Math.random());
 };
 
