@@ -1,0 +1,15 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:jstat@latest": "npm:jstat@1.9.6"
+    },
+    "npm": {
+      "jstat@1.9.6": {
+        "integrity": "sha512-rPBkJbK2TnA8pzs93QcDDPlKcrtZWuuCo2dVR0TFLOJSxhqfWOVCSp8aV3/oSbn+4uY4yw1URtLpHQedtmXfug==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {}
+}
