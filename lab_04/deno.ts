@@ -8,7 +8,8 @@ const N = 100_000_000;
 
 let nextArrivalTime: number;
 let nextServiceTime: number;
-let totalDelayTime = 0;
+let sumDelays = 0;
+let numDelays = 0;
 
 let curr: tRequest;
 let prev: tRequest = {
@@ -36,9 +37,10 @@ for (let n = 0; n < N; n++) {
 	const expectedRemovalTime = curr.arrivalTime + curr.serviceTime;
 
 	curr.removalTime = expectedRemovalTime - accumulatedDelayTime;
-	totalDelayTime += curr.removalTime - expectedRemovalTime;
+	numDelays += curr.removalTime - expectedRemovalTime > 0 ? 1 : 0;
+	sumDelays += curr.removalTime - expectedRemovalTime;
 
 	prev = curr;
 }
 
-console.log(totalDelayTime / N);
+console.log(sumDelays / numDelays);
