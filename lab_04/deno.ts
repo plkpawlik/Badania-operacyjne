@@ -1,46 +1,15 @@
-import { nextArrivalTimeA, nextServiceTimeA } from "./src/functions.ts";
-import { tRequest } from "./src/requests.ts";
+import { simulate } from "./src/simulate.ts";
+import {
+	nextArrivalTimeA,
+	nextServiceTimeA,
+	nextServiceTimeB,
+	nextServiceTimeC,
+} from "./src/functions.ts";
 
-const N = 100_000_000;
+const N = 1_000_000;
 
-/*   *   *   *   *   *   *   *   *   *   */
-/*   *   *   *   *   *   *   *   *   *   */
-
-let nextArrivalTime: number;
-let nextServiceTime: number;
-let sumDelays = 0;
-let numDelays = 0;
-
-let curr: tRequest;
-let prev: tRequest = {
-	arrivalTime: 0,
-	serviceTime: 0,
-	removalTime: 0,
-};
-
-/*   *   *   *   *   *   *   *   *   *   */
-/*   *   *   *   *   *   *   *   *   *   */
-
-for (let n = 0; n < N; n++) {
-	nextArrivalTime = nextArrivalTimeA();
-	nextServiceTime = nextServiceTimeA();
-
-	curr = {
-		arrivalTime: nextArrivalTime + prev.arrivalTime,
-		serviceTime: nextServiceTime,
-		removalTime: Infinity,
-	};
-
-	/*   *   *   *   *   *   *   *   */
-
-	const accumulatedDelayTime = Math.min(0, curr.arrivalTime - prev.removalTime);
-	const expectedRemovalTime = curr.arrivalTime + curr.serviceTime;
-
-	curr.removalTime = expectedRemovalTime - accumulatedDelayTime;
-	numDelays += curr.removalTime - expectedRemovalTime > 0 ? 1 : 0;
-	sumDelays += curr.removalTime - expectedRemovalTime;
-
-	prev = curr;
-}
-
-console.log(sumDelays / numDelays);
+console.log("Own implementation");
+console.log(simulate(nextArrivalTimeA, nextServiceTimeA, N));
+console.log(simulate(nextArrivalTimeA, nextServiceTimeB, N));
+console.log(simulate(nextArrivalTimeA, nextServiceTimeC, N));
+console.log(simulate(nextArrivalTimeA, nextServiceTimeA, N));

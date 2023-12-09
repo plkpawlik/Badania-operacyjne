@@ -14,7 +14,7 @@ export const nextServiceTimeA = (): number => {
 
 // uniform distribution: U(0, 120)
 export const nextServiceTimeB = (): number => {
-	return Math.round(BASE_SERVICE_TIME * Math.random());
+	return Math.round(2 * BASE_SERVICE_TIME * Math.random());
 };
 
 // exponential distribution: E(60)
