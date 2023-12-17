@@ -1,19 +1,26 @@
 import * as ext from "./src/functions.ext.ts";
-import * as own from "./src/functions.own.ts";
+import * as std from "./src/functions.std.ts";
 import { simulate } from "./src/simulate.ts";
 
-const N = 1_000_000;
+const N = 100_000_000;
 
-// Test 1
+// Test EXT
 console.log("Ext implementation");
 console.log(simulate(ext.nextArrivalTimeA, ext.nextServiceTimeA, N));
 console.log(simulate(ext.nextArrivalTimeA, ext.nextServiceTimeB, N));
 console.log(simulate(ext.nextArrivalTimeA, ext.nextServiceTimeC, N));
 console.log(simulate(ext.nextArrivalTimeA, ext.nextServiceTimeA, N));
 
-// Test 2
-console.log("Own implementation");
-console.log(simulate(own.nextArrivalTimeA, own.nextServiceTimeA, N));
-console.log(simulate(own.nextArrivalTimeA, own.nextServiceTimeB, N));
-console.log(simulate(own.nextArrivalTimeA, own.nextServiceTimeC, N));
-console.log(simulate(own.nextArrivalTimeA, own.nextServiceTimeA, N));
+// Test LCG
+console.log("Lcg implementation");
+console.log(simulate(ext.nextArrivalTimeA, ext.nextServiceTimeA, N));
+console.log(simulate(ext.nextArrivalTimeA, ext.nextServiceTimeB, N));
+console.log(simulate(ext.nextArrivalTimeA, ext.nextServiceTimeC, N));
+console.log(simulate(ext.nextArrivalTimeA, ext.nextServiceTimeA, N));
+
+// Test STD
+console.log("Std implementation");
+console.log(simulate(std.nextArrivalTimeA, std.nextServiceTimeA, N));
+console.log(simulate(std.nextArrivalTimeA, std.nextServiceTimeB, N));
+console.log(simulate(std.nextArrivalTimeA, std.nextServiceTimeC, N));
+console.log(simulate(std.nextArrivalTimeA, std.nextServiceTimeA, N));
