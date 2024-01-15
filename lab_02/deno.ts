@@ -7,8 +7,8 @@ import { benchmark } from "./src/time.ts";
 const data = readData(Deno.args[0]);
 const graph = new Graph(data.size, data.data);
 
-benchmark(() => new BellmanFord(graph).solve());
-benchmark(() => new Dijkstra(graph).solve());
+benchmark(() => new BellmanFord(graph).solve(), 1_000_000);
+benchmark(() => new Dijkstra(graph).solve(), 1_000_000);
 
 // calculate solutions
 const solution1 = new BellmanFord(graph).solve();
@@ -18,5 +18,5 @@ const solution2 = new Dijkstra(graph).solve();
 console.log(JSON.stringify(solution1) === JSON.stringify(solution2));
 
 // print solutions
-console.log("BellmanFord ::", solution1);
-console.log("   Dijkstra ::", solution2);
+// console.log("BellmanFord ::", solution1);
+// console.log("   Dijkstra ::", solution2);
