@@ -1,0 +1,270 @@
+Size: 100
+iterative :: 0.074 ms
+recursive :: 0.292 ms
+Size: 110
+iterative :: 0.078 ms
+recursive :: 0.310 ms
+Size: 120
+iterative :: 0.084 ms
+recursive :: 0.364 ms
+Size: 130
+iterative :: 0.094 ms
+recursive :: 0.388 ms
+Size: 140
+iterative :: 0.104 ms
+recursive :: 0.470 ms
+Size: 150
+iterative :: 0.108 ms
+recursive :: 0.490 ms
+Size: 160
+iterative :: 0.114 ms
+recursive :: 0.564 ms
+Size: 170
+iterative :: 0.122 ms
+recursive :: 0.582 ms
+Size: 180
+iterative :: 0.126 ms
+recursive :: 0.516 ms
+Size: 190
+iterative :: 0.130 ms
+recursive :: 0.610 ms
+Size: 200
+iterative :: 0.138 ms
+recursive :: 0.646 ms
+Size: 210
+iterative :: 0.146 ms
+recursive :: 0.682 ms
+Size: 220
+iterative :: 0.152 ms
+recursive :: 0.690 ms
+Size: 230
+iterative :: 0.152 ms
+recursive :: 0.736 ms
+Size: 240
+iterative :: 0.160 ms
+recursive :: 0.778 ms
+Size: 250
+iterative :: 0.166 ms
+recursive :: 0.796 ms
+Size: 260
+iterative :: 0.176 ms
+recursive :: 0.838 ms
+Size: 270
+iterative :: 0.182 ms
+recursive :: 0.896 ms
+Size: 280
+iterative :: 0.190 ms
+recursive :: 0.958 ms
+Size: 290
+iterative :: 0.190 ms
+recursive :: 0.962 ms
+Size: 300
+iterative :: 0.202 ms
+recursive :: 0.974 ms
+Size: 310
+iterative :: 0.210 ms
+recursive :: 1.052 ms
+Size: 320
+iterative :: 0.214 ms
+recursive :: 1.102 ms
+Size: 330
+iterative :: 0.222 ms
+recursive :: 1.144 ms
+Size: 340
+iterative :: 0.238 ms
+recursive :: 1.182 ms
+Size: 350
+iterative :: 0.236 ms
+recursive :: 1.234 ms
+Size: 360
+iterative :: 0.236 ms
+recursive :: 1.202 ms
+Size: 370
+iterative :: 0.248 ms
+recursive :: 1.288 ms
+Size: 380
+iterative :: 0.252 ms
+recursive :: 1.318 ms
+Size: 390
+iterative :: 0.260 ms
+recursive :: 1.336 ms
+Size: 400
+iterative :: 0.270 ms
+recursive :: 1.416 ms
+Size: 410
+iterative :: 0.268 ms
+recursive :: 1.412 ms
+Size: 420
+iterative :: 0.276 ms
+recursive :: 1.440 ms
+Size: 430
+iterative :: 0.286 ms
+recursive :: 1.486 ms
+Size: 440
+iterative :: 0.300 ms
+recursive :: 1.550 ms
+Size: 450
+iterative :: 0.296 ms
+recursive :: 1.620 ms
+Size: 460
+iterative :: 0.306 ms
+recursive :: 1.600 ms
+Size: 470
+iterative :: 0.314 ms
+recursive :: 1.642 ms
+Size: 480
+iterative :: 0.332 ms
+recursive :: 1.714 ms
+Size: 490
+iterative :: 0.334 ms
+recursive :: 1.778 ms
+Size: 500
+iterative :: 0.326 ms
+recursive :: 1.782 ms
+Size: 510
+iterative :: 0.340 ms
+recursive :: 1.826 ms
+Size: 520
+iterative :: 0.362 ms
+recursive :: 1.904 ms
+Size: 530
+iterative :: 0.370 ms
+recursive :: 2.024 ms
+Size: 540
+iterative :: 0.362 ms
+recursive :: 1.948 ms
+Size: 550
+iterative :: 0.364 ms
+recursive :: 2.014 ms
+Size: 560
+iterative :: 0.376 ms
+recursive :: 2.036 ms
+Size: 570
+iterative :: 0.384 ms
+recursive :: 2.134 ms
+Size: 580
+iterative :: 0.390 ms
+recursive :: 2.130 ms
+Size: 590
+iterative :: 0.394 ms
+recursive :: 2.226 ms
+Size: 600
+iterative :: 0.404 ms
+recursive :: 2.250 ms
+Size: 610
+iterative :: 0.404 ms
+recursive :: 2.246 ms
+Size: 620
+iterative :: 0.410 ms
+recursive :: 2.292 ms
+Size: 630
+iterative :: 0.422 ms
+recursive :: 2.344 ms
+Size: 640
+iterative :: 0.430 ms
+recursive :: 2.404 ms
+Size: 650
+iterative :: 0.432 ms
+recursive :: 2.452 ms
+Size: 660
+iterative :: 0.444 ms
+recursive :: 2.478 ms
+Size: 670
+iterative :: 0.448 ms
+recursive :: 2.510 ms
+Size: 680
+iterative :: 0.460 ms
+recursive :: 2.658 ms
+Size: 690
+iterative :: 0.464 ms
+recursive :: 2.612 ms
+Size: 700
+iterative :: 0.464 ms
+recursive :: 2.646 ms
+Size: 710
+iterative :: 0.478 ms
+recursive :: 2.722 ms
+Size: 720
+iterative :: 0.484 ms
+recursive :: 2.742 ms
+Size: 730
+iterative :: 0.490 ms
+recursive :: 2.742 ms
+Size: 740
+iterative :: 0.500 ms
+recursive :: 2.856 ms
+Size: 750
+iterative :: 0.500 ms
+recursive :: 2.788 ms
+Size: 760
+iterative :: 0.512 ms
+recursive :: 2.882 ms
+Size: 770
+iterative :: 0.510 ms
+recursive :: 2.920 ms
+Size: 780
+iterative :: 0.518 ms
+recursive :: 3.002 ms
+Size: 790
+iterative :: 0.526 ms
+recursive :: 3.068 ms
+Size: 800
+iterative :: 0.538 ms
+recursive :: 3.128 ms
+Size: 810
+iterative :: 0.546 ms
+recursive :: 3.096 ms
+Size: 820
+iterative :: 0.548 ms
+recursive :: 3.162 ms
+Size: 830
+iterative :: 0.572 ms
+recursive :: 3.166 ms
+Size: 840
+iterative :: 0.568 ms
+recursive :: 3.200 ms
+Size: 850
+iterative :: 0.560 ms
+recursive :: 3.230 ms
+Size: 860
+iterative :: 0.574 ms
+recursive :: 3.310 ms
+Size: 870
+iterative :: 0.588 ms
+recursive :: 3.376 ms
+Size: 880
+iterative :: 0.588 ms
+recursive :: 3.394 ms
+Size: 890
+iterative :: 0.590 ms
+recursive :: 3.426 ms
+Size: 900
+iterative :: 0.602 ms
+recursive :: 3.538 ms
+Size: 910
+iterative :: 0.614 ms
+recursive :: 3.610 ms
+Size: 920
+iterative :: 0.616 ms
+recursive :: 3.526 ms
+Size: 930
+iterative :: 0.616 ms
+recursive :: 3.554 ms
+Size: 940
+iterative :: 0.628 ms
+recursive :: 3.654 ms
+Size: 950
+iterative :: 0.646 ms
+recursive :: 3.746 ms
+Size: 960
+iterative :: 0.648 ms
+recursive :: 3.742 ms
+Size: 970
+iterative :: 0.652 ms
+recursive :: 3.838 ms
+Size: 980
+iterative :: 0.660 ms
+recursive :: 3.794 ms
+Size: 990
+iterative :: 0.666 ms
+recursive :: 3.928 ms
